@@ -1,18 +1,21 @@
-{ config, lib, pkgs, ... }:
-
 {
+  description = "Telegram bot for downloading yt videos";
   inputs = {
-    doc.url = "https://docs.aiogram.dev/en/latest/install.html";
-
     stable.url = "github:NixOS/nixpkgs/nixos-20.03";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
+
   outputs = inputs:
     let
       system = "x86_64-linux";
-      pkgs = inputs.stable.legacyPackages.${system};
+      pkgs = inputs.unstable.legacyPackages.${system};
       app = pkgs.poetry2nix.mkPoetryApplication { projectDir = ./.; };
+      env = pkgs.poetry2nix.mkPoetryEnv { projectDir = ./.; };
     in {
-      devShell."${system}" = app.dependecyEnv;
+      devShell."${system}" = pkgs.mkShell {
+        buildInputs = [ env pkgs.gnumake ];
+        PGPORT = 8000;
+      };
       # devShell."${system}" = import ./shell.nix {
       #   pkgs = inputs.stable.legacyPackages.${system};
       #   #import inputs.stable { inherit system; };
