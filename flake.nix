@@ -3,10 +3,6 @@
   inputs = {
     stable.url = "github:NixOS/nixpkgs/nixos-20.03";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    tennis-data = {
-      url = "github:JeffSackmann/tennis_atp";
-      flake = false;
-    };
   };
 
   outputs = inputs:
@@ -17,11 +13,7 @@
       env = pkgs.poetry2nix.mkPoetryEnv { projectDir = ./.; };
     in {
       devShell."${system}" = pkgs.mkShell {
-        buildInputs = with pkgs; [ env poetry ];
-        PGPORT = 8000;
-        shellHook = ''
-          ln -snf ${inputs.tennis-data}/atp_matches_2020.csv dataset.csv
-        '';
+        buildInputs = with pkgs; [ env poetry youtube-dl ];
       };
     };
 }
