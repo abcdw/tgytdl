@@ -3,7 +3,6 @@
     "root": {
       "inputs": {
         "stable": "stable",
-        "tennis-data": "tennis-data",
         "unstable": "unstable"
       }
     },
@@ -20,22 +19,6 @@
         "owner": "NixOS",
         "ref": "nixos-20.03",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "tennis-data": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1595939813,
-        "narHash": "sha256-k2Scc89Fu0u3HLtx+oVlQt4SyvPZ2XM8oOR8W6nuGmw=",
-        "owner": "JeffSackmann",
-        "repo": "tennis_atp",
-        "rev": "90a1480c7a0cb7d642d27857898372b84b323361",
-        "type": "github"
-      },
-      "original": {
-        "owner": "JeffSackmann",
-        "repo": "tennis_atp",
         "type": "github"
       }
     },

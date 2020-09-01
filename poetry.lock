@@ -132,6 +132,7 @@ version = ">=3.7.4"
 
 [metadata]
 content-hash = "6c0a710a2cc8223bfa3747320638523c44c0f6d2df2afdd4d259bcac5e1240df"
+lock-version = "1.0"
 python-versions = "^3.7"
 
 [metadata.files]
