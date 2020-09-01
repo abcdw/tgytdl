@@ -17,15 +17,11 @@
       env = pkgs.poetry2nix.mkPoetryEnv { projectDir = ./.; };
     in {
       devShell."${system}" = pkgs.mkShell {
-        buildInputs = with pkgs; [ env ];
+        buildInputs = with pkgs; [ env poetry ];
         PGPORT = 8000;
         shellHook = ''
           ln -snf ${inputs.tennis-data}/atp_matches_2020.csv dataset.csv
         '';
       };
-      # devShell."${system}" = import ./shell.nix {
-      #   pkgs = inputs.stable.legacyPackages.${system};
-      #   #import inputs.stable { inherit system; };
-      # };
     };
 }
