@@ -9,11 +9,12 @@
     let
       system = "x86_64-linux";
       pkgs = inputs.unstable.legacyPackages.${system};
-      # app = pkgs.poetry2nix.mkPoetryApplication { projectDir = ./.; };
+      app = pkgs.poetry2nix.mkPoetryApplication { projectDir = ./.; };
       env = pkgs.poetry2nix.mkPoetryEnv { projectDir = ./.; };
     in {
       devShell."${system}" = pkgs.mkShell {
         buildInputs = with pkgs; [ env poetry youtube-dl ];
       };
+      defaultPackage."${system}" = app;
     };
 }

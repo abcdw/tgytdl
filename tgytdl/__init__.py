@@ -32,5 +32,8 @@ def download_yt(url):
     result = subprocess.check_output(cmd, shell=True)
     return result.rstrip()
 
-if __name__ == "__main__":
+def run_bot():
     executor.start_polling(dp, skip_updates=True)
+
+if __name__ == "__main__":
+    run_bot()
